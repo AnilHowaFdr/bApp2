@@ -77,30 +77,31 @@ const Login = () => {
             {userErr.emailErr && (
               <p className="text-red-500">{userErr.emailErr}</p>
             )}
-            <input
-              onChange={(e) => {
-                setUser({ ...user, password: e.target.value });
-                setUserErr("");
-              }}
-              required=""
-              className="input relative"
-              type={passShow ? "text" : "password"}
-              name="password"
-              placeholder="Password"
-              value={user.password}
-            />
-
-            {passShow ? (
-              <IoMdEye
-                onClick={() => setPassShow(false)}
-                className="absolute text-black top-7 right-0 -translate-y-1/2 text-2xl cursor-pointer"
+            <div className="relative">
+              <input
+                onChange={(e) => {
+                  setUser({ ...user, password: e.target.value });
+                  setUserErr("");
+                }}
+                required=""
+                className="input"
+                type={passShow ? "text" : "password"}
+                name="password"
+                placeholder="Password"
+                value={user.password}
               />
-            ) : (
-              <IoMdEyeOff
-                onClick={() => setPassShow(true)}
-                className="absolute text-black top-7 right-0 -translate-y-1/2 text-2xl cursor-pointer"
-              />
-            )}
+              {passShow ? (
+                <IoMdEye
+                  onClick={() => setPassShow(false)}
+                  className="absolute text-gray-600 top-11 right-1 -translate-y-1/2 text-2xl cursor-pointer"
+                />
+              ) : (
+                <IoMdEyeOff
+                  onClick={() => setPassShow(true)}
+                  className="absolute text-gray-600 top-11 right-1 -translate-y-1/2 text-2xl cursor-pointer"
+                />
+              )}
+            </div>
 
             {userErr.passwordErr && (
               <p className="text-red-500">{userErr.passwordErr}</p>
